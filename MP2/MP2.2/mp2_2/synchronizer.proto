@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package csce438;
+import "google/protobuf/timestamp.proto";
+import "coordinator.proto";
+
+service SynchService{
+    rpc GetAllUsers (Confirmation) returns (AllUsers) {}
+    rpc GetTLFL (ID) returns (TLFL) {}
+    rpc ResynchServer (ServerInfo) returns (Confirmation) {}
+    rpc AddFollower (ID) returns (Confirmation) {}
+}
+
+//server info message definition
+message TLFL{
+    repeated string tl = 1;
+    repeated string fl = 2;
+    bool status = 3;
+}
+
+message AllUsers{
+    repeated string users = 1;
+}
+
